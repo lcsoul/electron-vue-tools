@@ -1,6 +1,4 @@
-'use strict'
-
-import { app, BrowserWindow } from 'electron'
+import { app, BrowserWindow, ipcMain } from 'electron'
 
 /**
  * Set `__static` path to static files in production
@@ -65,3 +63,29 @@ app.on('ready', () => {
   if (process.env.NODE_ENV === 'production') autoUpdater.checkForUpdates()
 })
  */
+ipcMain.on('win', (e, rs) => {
+  console.log(rs)
+  if (rs == 'minimize') {
+    mainWindow.minimize()
+  }
+  if (rs == 'maximize') {
+    if (mainWindow.isMaximized()) {
+      mainWindow.unmaximize()
+    }else{
+      mainWindow.maximize()
+    }
+  }
+  if (rs == 'full') {
+    if (mainWindow.isFullScreen()) {
+      mainWindow.setFullScreen(false)
+    }else{
+      mainWindow.setFullScreen(true)
+    }
+  }
+  if (rs == 'closed') {
+    // mainWindow.closed()
+    app.quit()
+  }
+  e.sender.send('winres', '666');
+
+})
