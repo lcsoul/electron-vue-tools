@@ -23,7 +23,7 @@
   },
   "build": {
     "productName": "tools",
-    "appId": "tools",
+    "appId": "1",
     "directories": {
       "output": "build"
     },
