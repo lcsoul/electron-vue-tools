@@ -2,10 +2,10 @@
     <div id="main">
         <div>{{userAgent}}</div>
         <div>{{nowTime}}</div>
-        <div class="uploadRegion">
+        <!-- <div class="uploadRegion">
             <div class="uploadRegionText">选择文件</div>
             <input type="file" id="uploadFile" name="content" ref="uploadFile" @change="uploadFile">
-        </div>
+        </div> -->
         <el-button type="primary" @click="setWin('minimize')">最小化</el-button>
         <el-button type="primary" @click="setWin('maximize')">最大化</el-button>
         <el-button type="primary" @click="setWin('full')">全屏</el-button>
@@ -30,12 +30,11 @@
         </div>
         <div>系统版本号:{{systemInfo.release}}</div>
         <div>系统已运行时间:{{systemInfo.uptime}}</div>
-        <textarea ref="textarea" style="width:100%;min-height:100px;" v-model="textarea"></textarea>
+        <!-- <textarea ref="textarea" style="width:100%;min-height:100px;" v-model="textarea"></textarea> -->
     </div>
 </template>
 
 <script>
-//   import SystemInformation from './LandingPage/SystemInformation'
 import fs from "fs";
 import os from "os";
 import path from 'path';

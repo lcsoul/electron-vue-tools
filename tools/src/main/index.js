@@ -67,6 +67,7 @@ ipcMain.on('win', (e, rs) => {
   console.log(rs)
   if (rs == 'minimize') {
     mainWindow.minimize()
+    e.sender.send('winres', '已执行最小化');
   }
   if (rs == 'maximize') {
     if (mainWindow.isMaximized()) {
@@ -74,6 +75,7 @@ ipcMain.on('win', (e, rs) => {
     }else{
       mainWindow.maximize()
     }
+    e.sender.send('winres', '已执行最大化');
   }
   if (rs == 'full') {
     if (mainWindow.isFullScreen()) {
@@ -81,11 +83,15 @@ ipcMain.on('win', (e, rs) => {
     }else{
       mainWindow.setFullScreen(true)
     }
+    e.sender.send('winres', '已执行全屏');
+  }
+  if (rs == 'reload') {
+    mainWindow.reload()
   }
   if (rs == 'closed') {
     // mainWindow.closed()
     app.quit()
   }
-  e.sender.send('winres', '666');
+  
 
 })
